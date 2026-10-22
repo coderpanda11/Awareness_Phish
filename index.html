@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#080b12">
+  <title>PHISHBREAK — Security Awareness Simulation</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#experience">Skip to simulation content</a>
+
+  <div class="scene" aria-hidden="true">
+    <div class="ambient ambient--one"></div>
+    <div class="ambient ambient--two"></div>
+    <div class="grid"></div>
+    <div class="particles" id="particles"></div>
+    <svg class="fracture" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <filter id="glass-blur">
+          <feGaussianBlur stdDeviation="1.2"></feGaussianBlur>
+        </filter>
+        <linearGradient id="shard-light" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#f8fafc" stop-opacity=".18"></stop>
+          <stop offset=".55" stop-color="#ef4444" stop-opacity=".04"></stop>
+          <stop offset="1" stop-color="#f8fafc" stop-opacity="0"></stop>
+        </linearGradient>
+      </defs>
+      <g class="shards" filter="url(#glass-blur)">
+        <path d="M790 470 630 0 850 0Z"></path>
+        <path d="M790 470 850 0 1120 0Z"></path>
+        <path d="M790 470 1120 0 1450 155Z"></path>
+        <path d="M790 470 1450 155 1600 405Z"></path>
+        <path d="M790 470 1600 405 1600 720Z"></path>
+        <path d="M790 470 1600 720 1300 1000Z"></path>
+        <path d="M790 470 1300 1000 930 1000Z"></path>
+        <path d="M790 470 930 1000 545 1000Z"></path>
+        <path d="M790 470 545 1000 210 920Z"></path>
+        <path d="M790 470 210 920 0 655Z"></path>
+        <path d="M790 470 0 655 0 285Z"></path>
+        <path d="M790 470 0 285 305 65Z"></path>
+        <path d="M790 470 305 65 630 0Z"></path>
+      </g>
+      <g class="cracks">
+        <path d="M790 470 745 350 765 260 700 170 630 0"></path>
+        <path d="M790 470 860 365 920 310 980 190 1120 0"></path>
+        <path d="M790 470 965 420 1100 335 1280 300 1450 155"></path>
+        <path d="M790 470 1000 515 1170 490 1350 560 1600 405"></path>
+        <path d="M790 470 905 610 1035 665 1115 815 1300 1000"></path>
+        <path d="M790 470 760 650 820 765 770 885 930 1000"></path>
+        <path d="M790 470 630 570 540 690 425 755 210 920"></path>
+        <path d="M790 470 590 455 470 510 315 450 0 655"></path>
+        <path d="M790 470 610 350 470 325 360 210 305 65"></path>
+        <path class="crack-branch" d="M745 350 650 315 585 235M920 310 1030 325 1095 255M1100 335 1140 230M1000 515 1100 590 1210 585M905 610 885 720 930 790M630 570 600 780 545 1000M590 455 455 400 345 410M610 350 565 180"></path>
+      </g>
+      <circle class="impact-ring impact-ring--one" cx="790" cy="470" r="35"></circle>
+      <circle class="impact-ring impact-ring--two" cx="790" cy="470" r="76"></circle>
+    </svg>
+    <div class="impact-flash"></div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#experience" aria-label="PHISHBREAK home">
+      <span class="brand__mark" aria-hidden="true">PB</span>
+      <span>PHISH<span>BREAK</span></span>
+    </a>
+    <div class="status-chip"><span></span> AUTHORIZED EXERCISE</div>
+  </header>
+
+  <div class="global-controls" aria-label="Simulation controls">
+    <button class="utility-button" id="fullscreenButton" type="button" aria-describedby="fullscreenHelp">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg>
+      <span>Enter Fullscreen</span>
+    </button>
+  </div>
+
+  <main id="experience" class="experience" tabindex="-1">
+    <section class="phase phase--impact is-active" id="impactPhase" data-phase="impact" aria-labelledby="impactTitle">
+      <div class="impact-layout">
+        <div class="threat-visual" aria-hidden="true">
+          <div class="threat-visual__ring threat-visual__ring--outer"></div>
+          <div class="threat-visual__ring threat-visual__ring--inner"></div>
+          <svg viewBox="0 0 120 120"><path d="M60 9 108 99H12Z"></path><path d="M60 39v28M60 82v2"></path></svg>
+          <span class="scan-line"></span>
+        </div>
+        <div class="glass-panel impact-panel">
+          <p class="eyebrow"><span></span> SECURITY AWARENESS SIMULATION</p>
+          <h1 id="impactTitle">YOU ARE <em>PHISHED.</em></h1>
+          <p class="lead">You clicked on a simulated phishing link. In a real attack, this action could expose sensitive information or compromise your workstation.</p>
+          <div class="impact-actions">
+            <button class="primary-button primary-button--danger" id="releaseButton" type="button">
+              <span>RELEASE</span>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>
+            </button>
+            <p><strong>Training mode:</strong> No data was collected by this page.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="phase phase--release" id="releasePhase" data-phase="release" aria-labelledby="releaseTitle" aria-hidden="true" inert>
+      <div class="glass-panel sequence-panel">
+        <div class="sequence-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="eyebrow eyebrow--warning">EDUCATION PROTOCOL</p>
+        <h2 id="releaseTitle">RELEASE SEQUENCE <em>INITIATED</em></h2>
+        <p>Preparing your one-minute threat awareness briefing.</p>
+        <div class="progress-track" role="progressbar" aria-label="Loading security awareness briefing" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <span id="releaseProgress"></span>
+        </div>
+        <div class="progress-meta"><span>ANALYZING INCIDENT</span><strong id="releasePercent">0%</strong></div>
+      </div>
+    </section>
+
+    <section class="phase phase--awareness" id="awarenessPhase" data-phase="awareness" aria-labelledby="awarenessTitle" aria-hidden="true" inert>
+      <div class="awareness-shell">
+        <header class="awareness-header">
+          <div>
+            <p class="eyebrow eyebrow--warning">ONE-MINUTE BRIEFING</p>
+            <h2 id="awarenessTitle">BREAK THE <em>ATTACK CHAIN</em></h2>
+          </div>
+          <p class="step-count"><span id="currentStep">01</span> / 03</p>
+        </header>
+
+        <div class="step-rail" aria-label="Briefing progress">
+          <span class="is-complete"></span><span></span><span></span>
+        </div>
+
+        <div class="lesson-frame">
+          <article class="lesson is-active" data-step="0" aria-labelledby="lessonOneTitle">
+            <div class="lesson__icon lesson__icon--red" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><path d="M14 10h36v44H14zM22 20h20M22 29h13M22 38h17"></path><path d="m39 43 5 5 9-11"></path></svg>
+            </div>
+            <div class="lesson__content">
+              <p class="lesson__number">01 — INCIDENT</p>
+              <h3 id="lessonOneTitle">What just happened?</h3>
+              <p>You clicked a link in a simulated phishing email. The exercise safely demonstrated how a single convincing message can cross an organization’s first line of defense.</p>
+              <div class="lesson__callout"><strong>Pause before you click.</strong> A few seconds of verification can stop an attack before it starts.</div>
+            </div>
+          </article>
+
+          <article class="lesson" data-step="1" aria-labelledby="lessonTwoTitle" hidden>
+            <div class="lesson__icon lesson__icon--orange" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><path d="M32 5 57 16v16c0 14-10 23-25 27C17 55 7 46 7 32V16Z"></path><path d="M32 18v18M32 44v1"></path></svg>
+            </div>
+            <div class="lesson__content">
+              <p class="lesson__number">02 — IMPACT</p>
+              <h3 id="lessonTwoTitle">Why phishing is dangerous</h3>
+              <p>One click can give an attacker a foothold. Phishing campaigns commonly lead to:</p>
+              <ul class="risk-grid">
+                <li><span>01</span>Credential theft</li>
+                <li><span>02</span>Malware delivery</li>
+                <li><span>03</span>Unauthorized access</li>
+                <li><span>04</span>Data exposure</li>
+                <li><span>05</span>Financial fraud</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="lesson" data-step="2" aria-labelledby="lessonThreeTitle" hidden>
+            <div class="lesson__icon lesson__icon--green" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle cx="27" cy="27" r="18"></circle><path d="m40 40 15 15M18 27l6 6 12-13"></path></svg>
+            </div>
+            <div class="lesson__content">
+              <p class="lesson__number">03 — DEFENSE</p>
+              <h3 id="lessonThreeTitle">How to recognize phishing</h3>
+              <ul class="check-list">
+                <li><span aria-hidden="true">✓</span><p><strong>Verify sender domains.</strong> Look beyond the display name.</p></li>
+                <li><span aria-hidden="true">✓</span><p><strong>Inspect suspicious URLs.</strong> Check the real destination before clicking.</p></li>
+                <li><span aria-hidden="true">✓</span><p><strong>Question urgency.</strong> Pressure and fear are common manipulation tactics.</p></li>
+                <li><span aria-hidden="true">✓</span><p><strong>Avoid unexpected attachments.</strong> Confirm through a trusted channel.</p></li>
+                <li><span aria-hidden="true">✓</span><p><strong>Report suspicious emails.</strong> Alert your organization’s security team.</p></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="lesson-controls">
+          <p id="lessonStatus" aria-live="polite">Step 1 of 3: What just happened?</p>
+          <button class="primary-button primary-button--warning" id="nextButton" type="button">
+            <span>NEXT</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="phase phase--success" id="successPhase" data-phase="success" aria-labelledby="successTitle" aria-hidden="true" inert>
+      <div class="glass-panel success-panel">
+        <div class="shield" aria-hidden="true">
+          <svg viewBox="0 0 120 140"><path class="shield__body" d="M60 7 107 26v39c0 34-19 56-47 68C32 121 13 99 13 65V26Z"></path><path class="shield__check" d="m35 68 17 17 34-39"></path></svg>
+          <span></span>
+        </div>
+        <p class="eyebrow eyebrow--success">THREAT RECOGNIZED</p>
+        <h2 id="successTitle">AWARENESS <em>COMPLETED</em></h2>
+        <p>Your phishing-awareness simulation is complete. Stay alert, verify suspicious requests, and report potential threats.</p>
+        <button class="primary-button primary-button--success" id="completeExitButton" type="button">
+          <span>EXIT SIMULATION</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4M16 17l5-5-5-5M21 12H9"></path></svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="phase phase--neutral" id="neutralPhase" data-phase="neutral" aria-labelledby="neutralTitle" aria-hidden="true" inert>
+      <div class="glass-panel neutral-panel">
+        <svg aria-hidden="true" viewBox="0 0 64 64"><circle cx="32" cy="32" r="25"></circle><path d="m20 32 8 8 17-18"></path></svg>
+        <p class="eyebrow eyebrow--success">SIMULATION ENDED</p>
+        <h2 id="neutralTitle">YOU MAY CLOSE THIS PAGE</h2>
+        <p>No workstation changes were made. Thank you for taking part in this authorized security awareness exercise.</p>
+      </div>
+    </section>
+  </main>
+
+  <p class="sr-only" id="fullscreenHelp">Fullscreen is optional. Press Escape at any time to leave fullscreen.</p>
+  <div class="sr-only" id="liveRegion" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <footer class="site-footer">
+    <span aria-hidden="true"></span>
+    Authorized Security Awareness Exercise — No workstation changes have been made.
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
